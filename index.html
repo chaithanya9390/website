@@ -16,11 +16,11 @@
       var pwd = document.getElementById("t4").value;
 
       if (fname === "") {
-        document.getElementById("s1").textContent = "**please enter the name**";
+        document.getElementById("s1").innerHTML = "**please enter the name**";
         return false;
       }
       if (fname.length <= 3 || fname.length >= 20) {
-        document.getElementById("s1").textContent = "**please enter the correct name**";
+        document.getElementById("s1").innerHTML = "**please enter the correct name**";
         return false;
       }
       if (!isNaN(fname)) {
