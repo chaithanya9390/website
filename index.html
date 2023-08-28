@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-    function display() {
+    function validateSignUpForm() {
       var fname = document.getElementById("t1").value;
       var num = document.getElementById("t2").value;
       var email = document.getElementById("t3").value;
@@ -48,7 +48,7 @@
         return false;
       }
       document.getElementById("s2").innerHTML = "";
-
+      
       if (email == "") 
 	  {
         document.getElementById("s3").innerHTML = "**don't keep email field blank**";
@@ -72,8 +72,38 @@
       }
       document.getElementById("s4").innerHTML = "";
       return true;
-      
-	  
+    }
+      function validateLoginForm() {
+      var nume= document.getElementById("t5").value;
+      var pwd1 = document.getElementById("t6").value;
+
+      if (nume == "") 
+	  {
+        document.getElementById("s5").innerHTML = "**don't keep mobile field blank**";
+        return false;
+      }
+      if (isNaN(nume))
+	  {
+        document.getElementById("s5").innerHTML = "**please enter digits only**";
+        return false;
+      }
+      if (nume.length !== 10) 
+	  {
+        document.getElementById("s6").innerHTML= "**please enter a 10-digit number**";
+        return false;
+      }
+      document.getElementById("s6").innerHTML = "";
+      if (pwd1 == "") 
+	  {
+        document.getElementById("s6").innerHTML = "**please enter the password**";
+        return false;
+      }
+      if (pwd1.length <= 6 || pwd1.length >= 10) {
+        document.getElementById("s6").innerHTML = "**please enter a valid password**";
+        return false;
+      }
+      document.getElementById("s6").innerHTML = "";
+      return true;
     }
   </script>
 </head>
@@ -164,7 +194,7 @@ style="width:200px;margin:-10%;"/></a>
           <span id="s4"style="color: red;"></span>
         </div>
         <center>
-          <button type="button" id="btn1" name="btn1" class="btn btn-default" onclick="display()" style="width:50%; background-color: green;">Continue</button>
+          <button type="button" id="btn1" name="btn1" class="btn btn-default" onclick="validateSignUpForm()" style="width:50%; background-color: green;">Continue</button>
         </center>
       </div>
 
@@ -195,14 +225,18 @@ style="width:200px;margin:-10%;"/></a>
         <div class="modal-body">
         <form>
 		<div class="form-group">
-        <input type="text" name="mobile" id="m1" value="" class="form-control"placeholder="Mobile or Email id">
+        <input type="text" name="mobile" id="t5" value="" class="form-control"placeholder=" Enter Mobile num">
+        <span id="s5"style="color: red;"></span>
+
 		</div>
 		<div class="form-group">
-		 <input type="text" name="password" id="m1" value="" class="form-control"placeholder="Password">
+		 <input type="text" name="password" id="t6" value="" class="form-control"placeholder="Password">
+     <span id="s6"style="color: red;"></span>
+
         </div>
 		<center>
 		<div class="form-group">
-		 <button type="submit"class= "btn btn-default" style="width:50%;background-color: green;">Login</button>
+		 <button type="button"class= "btn btn-default" onclick="validateLoginForm()"style="width:50%;background-color: green;">Login</button>
     </div>
     <hr>
     <div class="form-group">
